@@ -3,6 +3,8 @@
 
 
 ✅ 1. Install Kyverno using Helm (Recommended)
+
+```
  Install Kyverno into the "kyverno" namespace
 helm install kyverno kyverno/kyverno --namespace kyverno --create-namespace
 "kyverno" has been added to your repositories
@@ -27,7 +29,7 @@ The following components have been installed in your cluster:
 - Cleanup controller
 - Background controller
 
-
+`
 ⚠️  WARNING: Setting the admission controller replica count below 2 means Kyverno is not running in high availability mode.
 
 
@@ -36,7 +38,7 @@ The following components have been installed in your cluster:
 💡 Note: There is a trade-off when deciding which approach to take regarding Namespace exclusions. Please see the documentation at https://kyverno.io/docs/installation/#security-vs-operability to understand the risks.
 controlplane:~$ 
 
-
+```
 ntrolplane:~$ kubectl get pods -n kyverno
 NAME                                            READY   STATUS    RESTARTS   AGE
 kyverno-admission-controller-68666f545d-gr4fh   1/1     Running   0          90s
@@ -46,12 +48,7 @@ kyverno-reports-controller-6989f55fff-nlj9d     1/1     Running   0          90s
 
 
 
-Test It Works (Optional)
-Create a basic test policy:
-
-yaml
-Copy
-Edit
+Test It Works (Optional
 # save as require-label.yaml
 
 apiVersion: kyverno.io/v1
@@ -84,4 +81,4 @@ NAME            ADMISSION   BACKGROUND   READY   AGE   MESSAGE
 require-label   true        true         True    21s   Ready
 
 
-Now try creating a pod without the app label—it will be rejected.
+```
