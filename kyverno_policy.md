@@ -35,3 +35,11 @@ The following components have been installed in your cluster:
 
 💡 Note: There is a trade-off when deciding which approach to take regarding Namespace exclusions. Please see the documentation at https://kyverno.io/docs/installation/#security-vs-operability to understand the risks.
 controlplane:~$ 
+
+
+ntrolplane:~$ kubectl get pods -n kyverno
+NAME                                            READY   STATUS    RESTARTS   AGE
+kyverno-admission-controller-68666f545d-gr4fh   1/1     Running   0          90s
+kyverno-background-controller-5574bd864-9bfz6   1/1     Running   0          90s
+kyverno-cleanup-controller-6fb8985659-h89fd     1/1     Running   0          90s
+kyverno-reports-controller-6989f55fff-nlj9d     1/1     Running   0          90s
