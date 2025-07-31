@@ -53,6 +53,7 @@ yaml
 Copy
 Edit
 # save as require-label.yaml
+
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
@@ -71,8 +72,16 @@ spec:
         metadata:
           labels:
             app: "?*"
-bash
-Copy
-Edit
+
+
+
+
 kubectl apply -f require-label.yaml
+
+
+$ kubectl get ClusterPolicy -A
+NAME            ADMISSION   BACKGROUND   READY   AGE   MESSAGE
+require-label   true        true         True    21s   Ready
+
+
 Now try creating a pod without the app label—it will be rejected.
