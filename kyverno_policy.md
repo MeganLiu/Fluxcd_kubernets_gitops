@@ -3,35 +3,35 @@
 
 
 ✅ 1. Install Kyverno using Helm (Recommended)
-Best for production clusters or if you’re already using Helm.
-
-Step-by-step:
-bash
-Copy
-Edit
-# Add the Kyverno Helm repository
-helm repo add kyverno https://kyverno.github.io/kyverno/
-helm repo update
-
-# Install Kyverno into the "kyverno" namespace
+ Install Kyverno into the "kyverno" namespace
 helm install kyverno kyverno/kyverno --namespace kyverno --create-namespace
-Verify installation:
-bash
-Copy
-Edit
-kubectl get pods -n kyverno
-You should see Kyverno pods running.
+"kyverno" has been added to your repositories
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "kyverno" chart repository
+Update Complete. ⎈Happy Helming!⎈
+NAME: kyverno
+LAST DEPLOYED: Thu Jul 31 09:15:44 2025
+NAMESPACE: kyverno
+STATUS: deployed
+REVISION: 1
+NOTES:
+Chart version: 3.4.4
+Kyverno version: v1.14.4
 
-✅ 2. Install Kyverno using kubectl (Quick Start)
-Good for testing or small setups.
+Thank you for installing kyverno! Your release is named kyverno.
 
-bash
-Copy
-Edit
-kubectl create -f https://raw.githubusercontent.com/kyverno/kyverno/main/config/install.yaml
-To uninstall:
+The following components have been installed in your cluster:
+- CRDs
+- Admission controller
+- Reports controller
+- Cleanup controller
+- Background controller
 
-bash
-Copy
-Edit
-kubectl delete -f https://raw.githubusercontent.com/kyverno/kyverno/main/config/install.yam
+
+⚠️  WARNING: Setting the admission controller replica count below 2 means Kyverno is not running in high availability mode.
+
+
+⚠️  WARNING: PolicyExceptions are disabled by default. To enable them, set '--enablePolicyException' to true.
+
+💡 Note: There is a trade-off when deciding which approach to take regarding Namespace exclusions. Please see the documentation at https://kyverno.io/docs/installation/#security-vs-operability to understand the risks.
+controlplane:~$ 
