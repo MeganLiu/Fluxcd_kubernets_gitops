@@ -43,3 +43,36 @@ kyverno-admission-controller-68666f545d-gr4fh   1/1     Running   0          90s
 kyverno-background-controller-5574bd864-9bfz6   1/1     Running   0          90s
 kyverno-cleanup-controller-6fb8985659-h89fd     1/1     Running   0          90s
 kyverno-reports-controller-6989f55fff-nlj9d     1/1     Running   0          90s
+
+
+
+Test It Works (Optional)
+Create a basic test policy:
+
+yaml
+Copy
+Edit
+# save as require-label.yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-label
+spec:
+  validationFailureAction: enforce
+  rules:
+  - name: check-label
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "All pods must have the 'app' label."
+      pattern:
+        metadata:
+          labels:
+            app: "?*"
+bash
+Copy
+Edit
+kubectl apply -f require-label.yaml
+Now try creating a pod without the app label—it will be rejected.
