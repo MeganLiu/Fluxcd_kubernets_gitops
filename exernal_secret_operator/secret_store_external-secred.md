@@ -120,3 +120,25 @@ Bash
 kubectl get secret my-k8s-secret -n default
 The output should show a Secret of type Opaque with the my-database-password key, which you can now mount into your pods.
 
+
+
+List all CRDs and filter
+bash
+Copy
+Edit
+kubectl get crd | grep secretstore
+You should see:
+
+kotlin
+Copy
+Edit
+clustersecretstores.external-secrets.io
+secretstores.external-secrets.io
+2️⃣ Get details of the CRD
+For example, check SecretStore:
+
+bash
+Copy
+Edit
+kubectl describe crd secretstores.external-secrets.io
+
