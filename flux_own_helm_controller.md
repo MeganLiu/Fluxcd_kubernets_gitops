@@ -1,4 +1,35 @@
-Which “HelmChart controller” is Flux talking about?
+
+► annotating HelmRepository kyverno in flux-system namespace
+
+Flux first adds a special annotation (reconcile.fluxcd.io/requestedAt) to the HelmRepository object.
+
+This forces the HelmRepository controller to re-fetch chart metadata from the upstream repo.
+
+✔ HelmRepository annotated
+
+Annotation applied successfully.
+
+◎ waiting for HelmRepository reconciliation
+
+Flux waits until the repo controller has finished fetching metadata.
+
+✔ fetched revision sha256:5caf...
+
+The repository was fetched successfully, and Flux shows the checksum of the fetched index (so you know which repo state it’s working with).
+
+► annotating HelmChart flux-system-kyverno in flux-system namespace
+
+Now Flux forces reconciliation of the HelmChart resource (this is the rendered chart from the Helm repo, ready to be installed).
+
+✔ HelmChart annotated
+
+Annotation applied successfully.
+
+◎ waiting for HelmChart reconciliation
+
+Flux waits until the HelmChart controller has finished pulling and preparing the chart.
+
+## Which “HelmChart controller” is Flux talking about?
 
 It’s Flux’s own Helm controller, not anything from the official Helm project.
 
@@ -19,7 +50,7 @@ So when you see:
 ◎ waiting for HelmChart reconciliation
 
 
-Flux is waiting for its own helm-controller to finish reconciling the HelmChart object.
+## Flux is waiting for its own helm-controller to finish reconciling the HelmChart object.
 
 🔹 How to check the logs
 
