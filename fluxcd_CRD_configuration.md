@@ -88,3 +88,35 @@ ocirepositories.source.toolkit.fluxcd.io	Source controller — represents an OCI
 providers.notification.toolkit.fluxcd.io	Notification controller — defines notification targets (Slack, Teams, etc.)
 
 receivers.notification.toolkit.fluxcd.io	Notification controller — receives external events (webhooks) to trigger alerts or syncs
+
+## Gitrepositories and Kustomization relationship
+Example:
+# GitRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  url: https://github.com/my-org/my-repo
+  branch: main
+  interval: 1m
+---
+# Kustomization
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 10m
+  path: ./clusters/sds-production
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+
+
+The GitRepository fetches everything from the repo.
+
+The Kustomization applies just ./clusters/sds-production to the cluster every 10 minutes and prunes deleted resources.
