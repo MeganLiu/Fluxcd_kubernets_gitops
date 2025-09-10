@@ -120,3 +120,6 @@ spec:
 The GitRepository fetches everything from the repo.
 
 The Kustomization applies just ./clusters/sds-production to the cluster every 10 minutes and prunes deleted resources.
+
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/81cffc4f-dbac-44e0-8c32-db23ef88bd4f" />
+
